@@ -86,7 +86,7 @@ class _Worker(object):
                       batch.log_text(None,  timestamp=item['timestamp'], labels=item['labels'], resource=item['resource'], severity=item['severity'], trace=item['trace'], span_id=item['span_id'], http_request=item['http_request']) 
                     else:
                       try:
-                          msg=ast.literal_eval(item['message'])
+                          msg=ast.literal_eval({'message': item['message']})
                           batch.log_struct(msg,  timestamp=item['timestamp'], labels=item['labels'], resource=item['resource'], severity=item['severity'], trace=item['trace'], span_id=item['span_id'], http_request=item['http_request'])
                       except Exception as e:
                         #print("Error " + str(e))
